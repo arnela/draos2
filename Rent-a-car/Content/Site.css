@@ -1,0 +1,61 @@
+﻿body {
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navigationMenu
+{
+    background-color: #353547;
+}
+
+ul.nav.navbar-nav.navbar-right li a.page-scroll
+{
+    color: #a5cbde;
+}
+
+a.default-color{
+    color:white;
+}
+
+.modal-content {
+        width: 600px !important;
+        margin: 30px auto !important;
+ }
+
+.main-modal-class{
+    background-color:whitesmoke;
+    height:550px;
+    width:1000px;
+    margin-left:250px;
+    margin-top:100px;
+}
+
+.createCarImage{
+    height:300px;
+    width:450px;
+}
+
+.detailsImg
+{
+    height:140px;
+    width:220px;
+}

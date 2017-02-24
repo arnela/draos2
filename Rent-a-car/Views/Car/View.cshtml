@@ -1,0 +1,78 @@
+﻿@model  IEnumerable<Rent_a_car.Models.Car>
+
+<h4 class="text-center">Cars details</h4>
+<hr />
+
+@foreach (var item in Model)
+{
+    using (Html.BeginForm("Save", "Car", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.Title, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => item.Title, new {disabled= "disabled" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.AirCondition, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => item.AirCondition, new { disabled = "disabled" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.MaxNumberOfPerson, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => item.MaxNumberOfPerson, new { disabled = "disabled" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.TypeOfFuel, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => item.TypeOfFuel, new { disabled = "disabled" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.Consumption, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => item.Consumption, new { disabled = "disabled" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img class="detailsImg" src="@Url.Content(item.ImagePath)" alt="Image" />
+            </div>
+        </div>
+        <hr />
+    }
+}
+
+<div class="form-group">
+    <div class="col-md-offset-8 col-md-4">
+        <input type="button" value="Cancel" id="Cancel" class="btn btn-default" onclick="cancel()" />
+    </div>
+</div>
+
+<br />
+<br />
+<br />

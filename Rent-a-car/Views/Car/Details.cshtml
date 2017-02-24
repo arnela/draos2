@@ -1,0 +1,109 @@
+﻿@model  IEnumerable<Rent_a_car.Models.Car>
+
+<h4 class="text-center">Cars details</h4>
+<hr />
+
+@foreach (var item in Model)
+{
+    using (Html.BeginForm("Save", "Car", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    {
+        <input type="hidden" value="@item.ID" name="hiddenID" />
+        <input type="hidden" value="@item.ImagePath" name="hiddenImagePath" />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.Title, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => item.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => item.Title, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.AirCondition, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+
+                        @Html.EditorFor(model => item.AirCondition)
+                        @Html.ValidationMessageFor(model => item.AirCondition, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.MaxNumberOfPerson, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => item.MaxNumberOfPerson, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => item.MaxNumberOfPerson, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.TypeOfFuel, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.EnumDropDownListFor(model => item.TypeOfFuel, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => item.TypeOfFuel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.Consumption, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => item.Consumption, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => item.Consumption, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.Price, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => item.Price, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => item.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="text-center">
+                            <input type="submit" value="Save" />
+                            <button type="button" onclick="location.href='@Url.Action("Delete", "Car", new {id = item.ID})'" >
+                            Delete
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img class="detailsImg" src="@Url.Content(item.ImagePath)" alt="Image" />
+            </div>
+        </div>
+        <hr />
+    }
+}
+
+<div class="form-group">
+    <div class="col-md-offset-8 col-md-4">
+        <input type="button" value="Cancel" id="Cancel" class="btn btn-default" onclick="cancel()" />
+    </div>
+</div>
+
+<br />
+<br />
+<br />

@@ -1,0 +1,64 @@
+﻿@model  IEnumerable<Rent_a_car.Models.CarReservation>
+
+<h4 class="text-center"><strong>Pending request</strong></h4>
+
+<table class="table col-md-offset-1">
+    @foreach (var item in Model)
+    {
+        if (@item.IsActive == true)
+        {
+            <tr>
+                <td style="width:100%;"> Pending Admin response for reserving car @item.CarTitle in period @item.BeginDate - @item.EndDate</td>
+            </tr>
+            <hr />
+        }
+    }
+</table>
+
+<br />
+<br />
+<br />
+
+
+<h4 class="text-center"><strong>Approved requests</strong></h4>
+<table class="table col-md-offset-1">
+    @foreach (var item in Model)
+    {
+        if (@item.IsActive == false && @item.IsApproved == true)
+        {
+            <tr>
+                <td style="width:100%;">
+                    <div>
+                        Car @item.CarTitle in reserved due the period @item.BeginDate - @item.EndDate
+                    </div>
+                </td>
+            </tr>
+            <hr />
+        }
+    }
+</table>
+
+
+
+<br />
+<br />
+<br />
+
+
+<h4 class="text-center"><strong>Declined requests</strong></h4>
+<table class="table col-md-offset-1">
+    @foreach (var item in Model)
+    {
+        if (@item.IsActive == false && @item.IsApproved == false)
+        {
+            <tr>
+                <td style="width:100%;">
+                    <div>
+                        Admin declined your request for @item.CarTitle due the period @item.BeginDate - @item.EndDate
+                    </div>
+                </td>
+            </tr>
+            <hr />
+        }
+    }
+</table>

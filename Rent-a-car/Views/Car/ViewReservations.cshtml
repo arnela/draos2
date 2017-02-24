@@ -1,0 +1,38 @@
+﻿@model  IEnumerable<Rent_a_car.Models.CarReservation>
+
+<h4 class="text-center"><strong>Reserved requests</strong></h4>
+
+<table class="table col-md-offset-1">
+    @foreach (var item in Model)
+    {
+        if (@item.IsActive == false && @item.IsApproved == true)
+        {
+            <tr>
+                <td style="width:100%;"> User @item.NameofCustomer reserved car @item.CarTitle in period @item.BeginDate - @item.EndDate</td>
+            </tr>
+            <hr />
+        }
+    }
+</table>
+
+<br />
+<br />
+<br />
+
+
+<h4 class="text-center"><strong>Reservation requests</strong></h4>
+<table class="table col-md-offset-1">
+    @foreach (var item in Model)
+    {
+        if (@item.IsActive == true)
+        {
+            <tr>
+                <td style="width:100%;">
+                <div>User @item.NameofCustomer wants to reserve car @item.CarTitle in period @item.BeginDate - @item.EndDate
+                &nbsp; &nbsp; &nbsp; &nbsp; <input type="button" value="Accept" onclick="approve(@item.ReservationID)" />
+<input type="button" value="Decline" onclick="decline(@item.ReservationID)" /></div></td>
+            </tr>
+        <hr />
+        }
+    }
+</table>

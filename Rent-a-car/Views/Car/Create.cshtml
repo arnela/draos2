@@ -1,0 +1,123 @@
+﻿@model Rent_a_car.Models.Car
+
+
+@using (Html.BeginForm("Create", "Car", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h2 class="text-center">Add new car</h2>
+    <hr />
+
+    <div class="col-md-6">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div>
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AirCondition, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div>
+                    <div class="checkbox col-md-3">
+                        @Html.EditorFor(model => model.AirCondition)
+                        @Html.ValidationMessageFor(model => model.AirCondition, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaxNumberOfPerson, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div>
+                    @Html.EditorFor(model => model.MaxNumberOfPerson, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MaxNumberOfPerson, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TypeOfFuel, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div>
+                    @Html.DropDownListFor(model => model.TypeOfFuel, Enum.GetNames(typeof(Rent_a_car.Models.Enums.TypeOfFuel)).Select(e => new SelectListItem { Text = e }))
+                    @Html.ValidationMessageFor(model => model.TypeOfFuel, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Consumption, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div>
+                    @Html.EditorFor(model => model.Consumption, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Consumption, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div>
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div>
+                    <div class="editor-field">
+                        <input id="choseImage" title="Upload a product image" type="file" name="file" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-5">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <img id="blah" class="createCarImage" src="#" alt="Car Image" />
+    </div>
+
+    
+}
+
+<div class="form-group">
+    <div class="col-md-offset-10 col-md-2">
+        <input type="button" value="Cancel" id="Cancel" class="btn btn-default" onclick="cancel()" />
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('#approve-btn').click(function () {
+            $('#modal-container').modal('hide');
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $('#choseImage').change(function () {
+            readURL(this);
+        });
+    });
+</script>

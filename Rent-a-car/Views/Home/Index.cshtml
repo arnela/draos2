@@ -1,0 +1,102 @@
+﻿
+@if (User.Identity.IsAuthenticated)
+{
+    <section id="services" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Our Services</h2>
+                    <hr class="small">
+
+                    
+                        <div class="row">
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="service-item">
+                                        <span class="fa-stack fa-4x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-cloud fa-stack-1x text-primary"></i>
+                                        </span>
+                                        <h4>
+                                            @Html.ActionLink("Add car", "Create", "Car", null, new { @class = "modal-link btn btn-success" })
+                                        </h4>
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="service-item">
+                                        <span class="fa-stack fa-4x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                                        </span>
+                                        <h4>
+                                            @Html.ActionLink("Details", "Details", "Car", null, new { @class = "modal-link btn btn-success" })
+                                        </h4>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="service-item">
+                                        <span class="fa-stack fa-4x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                                        </span>
+                                        <h4>
+                                            @Html.ActionLink("View Reservations", "ViewReservations", "Car", null, new { @class = "modal-link btn btn-success" })
+                                        </h4>
+                                    </div>
+                                </div>
+
+
+                            }
+                            else
+
+                            {
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="service-item">
+                                        <span class="fa-stack fa-4x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-flask fa-stack-1x text-primary"></i>
+                                        </span>
+                                        <h4>
+                                            @Html.ActionLink("View Cars", "View", "Car", null, new { @class = "modal-link btn btn-success" })
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="service-item">
+                                        <span class="fa-stack fa-4x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-shield fa-stack-1x text-primary"></i>
+                                        </span>
+                                        <h4>
+                                            @Html.ActionLink("Reserve car", "Reserve", "Car", null, new { @class = "modal-link btn btn-success" })
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="service-item">
+                                        <span class="fa-stack fa-4x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                                        </span>
+                                        <h4>
+                                            @Html.ActionLink("View Reservation Requests", "ViewReservationRequests", "Car", null, new { @class = "modal-link btn btn-success" })
+                                        </h4>
+                                    </div>
+                                </div>
+                            }
+
+                            
+                        </div>
+                        <!-- /.row (nested) -->
+</div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+}
