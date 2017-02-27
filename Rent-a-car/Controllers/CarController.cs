@@ -118,7 +118,8 @@ namespace Rent_a_car.Controllers
         public ActionResult Create(Car model, HttpPostedFileBase file)
         {
             //Save image on local path
-            string path = @"C:\Users\Arnela\Documents\Visual Studio 2015\Projects\Rent-a-car\Rent-a-car\CarImages\";
+           string path =  Server.MapPath("~/CarImages/");
+       //     string path = @"C:\Users\Arnela\Documents\Visual Studio 2015\Projects\Rent-a-car\Rent-a-car\CarImages\";
             if (ModelState.IsValid)
             {
                 if (file != null)
