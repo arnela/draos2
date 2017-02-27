@@ -58,6 +58,18 @@
                         @Html.TextBoxFor(model => item.Consumption, new { disabled = "disabled" })
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => item.Price, htmlAttributes: new { @class = "col-md-offset-4" })
+                    </div>
+                    <span class="currencyinput">
+                        €
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => item.Price, new { disabled = "disabled" })
+                        </div>
+                     </span>
+</div>
             </div>
             <div class="col-md-6">
                 <img class="detailsImg" src="@Url.Content(item.ImagePath)" alt="Image" />

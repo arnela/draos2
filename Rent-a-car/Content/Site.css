@@ -59,3 +59,10 @@ a.default-color{
     height:140px;
     width:220px;
 }
+
+.currencyinput {
+    border: 1px inset #ccc;
+}
+.currencyinput input {
+    border: 0;
+}

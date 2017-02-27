@@ -21,6 +21,5 @@ namespace Rent_a_car.Models
 
         public bool IsApproved { get; set; }
 
-        public decimal Price { get; set; }
     }
 }
